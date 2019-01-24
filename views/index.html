@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home Page</title>
+  <style src='mystyle.css' rel='stylesheet'></style>
+  <script>
+    function loadData(){
+      alert('ajax function called');
+      //create XMLHttpRequest obj
+      var xhttp = new XMLHttpRequest();
+      var url="http://localhost:3333/data?send=helloajax";
+      //opent the request using open function
+      xhttp.open('GET',url,true);
+      //send the request
+      xhttp.send();
+      xhttp.onreadystatechange= function(){
+      //  alert(''+xhttp.readyState);
+        if(xhttp.readyState ==4 && xhttp.status ==200){
+          //process the XMLhttpRequest
+          document.getElementById('result').innerHTML=xhttp.responseText;
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  <h1>  root rouing called </h1>
+  <p id='result'></p>
+  <br>
+  <button onclick='loadData()'>Load-Data</button>
+  <select class="" name="">
+    <option value='0'> Select city</option>
+    <option value='1'> ..</option>
+    <option value='2'> ..</option>
+    <option value='3'> ..</option>
+
+  </select>
+  </body>
+
+</html>
